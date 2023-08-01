@@ -48,23 +48,15 @@ public class App
     }
 
     public static void translate() {
-// 请求url
+        // 请求url
         String url = "https://aip.baidubce.com/file/2.0/mt/pictrans/v1?access_token=";
         String accessToken = "24.ae9dac10714ee8c6b38d4d3b69483f26.2592000.1693383855.282335-36960774";
         try {
-            String param = "{\"id\": \"kR7z8nOMLV7prmE194Po\"}";
-            MediaType mediaType = MediaType.parse("mutipart/form-data");
             Map<String, String> map = new HashMap<>();
-            map.put("from", "auto");
+            map.put("from", "en");
             map.put("to", "zh");
             map.put("v", "3");
-            File file = new File("/Users/dongshuaiyin/Downloads/WechatIMG818.jpeg");
-            FileInputStream fis = new FileInputStream(file);
-            int available = fis.available();
-            Base64.Encoder encoder = Base64.getEncoder();
-            byte[] bytes = new byte[available];
-            fis.read(bytes);
-            String base64Str = encoder.encodeToString(bytes);
+            File file = new File("/Users/dongshuaiyin/Downloads/2.jpeg");
 
             MediaType MEDIA_TYPE_PNG = MediaType.parse("image/jpeg");
             RequestBody filebody = MultipartBody.create(MEDIA_TYPE_PNG, file);
@@ -84,13 +76,6 @@ public class App
                 }
             }
             RequestBody multiBody=multiBuilder.build();
-
-            FormBody.Builder formBuilder = new FormBody.Builder()
-                    .add("image", base64Str)
-                    .add("from", "auto")
-                    .add("to", "zh")
-                    .add("v", "3");
-//            RequestBody body = RequestBody.create(mediaType, formBuilder.build());
             Request request = new Request.Builder()
                     .url(url+accessToken)
                     .addHeader("Content-Type", "multipart/form-data")
