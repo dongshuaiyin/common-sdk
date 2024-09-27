@@ -17,6 +17,7 @@ public interface CommonConst {
     String SEPARATOR_MINUS = "-";
     String SEPARATOR_COMMA = ",";
     String SEPARATOR_BACKSLASH = "/";
+    String SEPARATOR_ASTERISK = "*";
     String SEPARATOR_POINT = ".";
     String SEPARATOR_LOG = "$$";
     String SEPARATOR_LINE = "\n";
